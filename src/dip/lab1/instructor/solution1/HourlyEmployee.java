@@ -41,6 +41,7 @@ public class HourlyEmployee implements Employee {
      * high-level class. The other methods are not part of the contract and
      * therefore can't be used in the high-level class.
      */
+    @Override
     public final double getAnnualWages() {
         return hourlyRate * totalHrsForYear;
     }

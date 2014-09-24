@@ -9,14 +9,6 @@ package dip.lab2.fixed;
  *
  * @author Mitch
  */
-public class CalculatorManager {
-    private Calculator calculator;
-    
-    public CalculatorManager(Calculator calc){
-        calculator = calc;
-    }
-    
-    public double getTip(){
-        return calculator.getTip();
-    }
+public enum ServiceQuality {
+    GOOD, FAIR, POOR
 }

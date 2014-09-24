@@ -18,16 +18,14 @@ public class FoodServiceTipCalculator2 implements Calculator{
     private static final double POOR_RATE = 0.10;
 
     private double bill;
-    public enum ServiceQuality {
-        GOOD, FAIR, POOR
-    }
     private ServiceQuality serviceQuality;
 
-    public FoodServiceTipCalculator2(ServiceQuality q, double billAmt) {
-        this.setServiceRating(q);
+    public FoodServiceTipCalculator2(ServiceQuality quality, double billAmt) {
+        this.setServiceQuality(quality);
         this.setBill(billAmt);
     }
 
+    @Override
     public double getTip() {
         double tip = 0.00; // always initialize local variables
 
@@ -53,9 +51,9 @@ public class FoodServiceTipCalculator2 implements Calculator{
         bill = billAmt;
     }
 
-    public final void setServiceRating(ServiceQuality q) {
+    public final void setServiceQuality(ServiceQuality quality) {
         // No need to validate because enums provide type safety!
-        serviceQuality = q;
+        serviceQuality = quality;
     }
 
     public ServiceQuality getServiceQuality() {

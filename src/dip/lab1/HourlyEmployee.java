@@ -1,4 +1,4 @@
-package dip.lab1;
+fpackage dip.lab1;
 
 /**
  * An implementation sub-class of an Employee. These are low-level classes

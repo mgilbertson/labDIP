@@ -10,10 +10,16 @@ package dip.lab2.fixed;
  * @author Mitch
  */
 public class BaggageServiceTipCalculator2 implements Calculator{
-
-    private static final double GOOD_RATE = 0.20;
-    private static final double FAIR_RATE = 0.15;
-    private static final double POOR_RATE = 0.10;
+    //make variables lowercase, create getters/setters for each. 
+    //if you have to change the high level class because of lower-level classes you are doing something wrong
+    private double MIN_BILL = 0.00;
+    private double MAX_BILL = 100.00;
+    private String BILL_ENTRY_ERR =
+            "Error: bill must be between " + MIN_BILL + " and "
+            + MAX_BILL;
+    private double GOOD_RATE = 0.20;
+    private double FAIR_RATE = 0.15;
+    private double POOR_RATE = 0.10;
 
     private double baseTipPerBag;
     private int bagCount;
@@ -21,16 +27,14 @@ public class BaggageServiceTipCalculator2 implements Calculator{
     private double tip;
     
 
-    public BaggageServiceTipCalculator2(int bags, double baseTipPerBag, ServiceQuality serviceQuality) {
+    public BaggageServiceTipCalculator2(ServiceQuality quality, int bags) {
         setBagCount(bags);
-        setBaseTipPerBag(baseTipPerBag);
-        setServiceQuality(serviceQuality);
+        setServiceQuality(quality);
     }
 
-    public double getAnnualCompensationForEmployee(Calculator c) {
-        
-
-        switch(c.getServiceQuality()) {
+    @Override
+    public double getTip() {
+        switch(serviceQuality) {
             case GOOD:
                 tip = baseTipPerBag * bagCount * (1 + GOOD_RATE);
                 break;
@@ -44,9 +48,6 @@ public class BaggageServiceTipCalculator2 implements Calculator{
         return tip;
     }
 
-    public int getBagCount() {
-        return bagCount;
-    }
 
     public final void setBagCount(int bagCount) {
         if(bagCount < 0) {
@@ -56,31 +57,18 @@ public class BaggageServiceTipCalculator2 implements Calculator{
         this.bagCount = bagCount;
     }
 
-    public double getBaseTipPerBag() {
-        return baseTipPerBag;
-    }
 
-    public void setBaseTipPerBag(double baseTipPerBag) {
+    public final void setBaseTipPerBag(double baseTipPerBag) {
         if(baseTipPerBag < 0) {
             throw new IllegalArgumentException(
                     "error: base tip must be greater than or equal to zero");
         }
         this.baseTipPerBag = baseTipPerBag;
     }
-     public void setServiceQuality(ServiceQuality quality){
+    
+
+     public final void setServiceQuality(ServiceQuality quality){
         serviceQuality = quality;
     }
-    public ServiceQuality getServiceQuality(){
-        return serviceQuality;
-    }
 
-    @Override
-    public double getTip() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setServiceQuality() {
-       
-    }
 }

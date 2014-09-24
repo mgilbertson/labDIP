@@ -10,11 +10,7 @@ package dip.lab2.fixed;
  * @author Mitch
  */
 public interface Calculator {
-    public enum ServiceQuality {
-        GOOD, FAIR, POOR
-    }
+    
     public abstract double getTip();
     
-    public abstract void setServiceQuality();
-    public abstract ServiceQuality getServiceQuality();
 }
